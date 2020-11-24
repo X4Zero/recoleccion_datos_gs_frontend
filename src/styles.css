@@ -1,1 +1,80 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+/* You can add global styles to this file, and also import other style files */
+
+body {
+    /* background: #005AA7; */
+    /* fallback for old browsers */
+    /* background: -webkit-linear-gradient(to right, #FFFDE4, #005AA7); */
+    /* Chrome 10-25, Safari 5.1-6 */
+    /* background: linear-gradient(to right, #FFFDE4, #005AA7); */
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.puntero {
+    cursor: pointer;
+}
+
+.img-card {
+    max-width: 215px;
+    max-height: 215px;
+    /* width: 220px;
+    height: 220px;  */
+}
+
+.card {
+    max-width: 19rem;
+    min-width: 14rem;
+    margin-bottom: 1rem !important;
+}
+
+.img-circle {
+    border-radius: 100%;
+    width: 150px;
+}
+
+.badge {
+    margin-left: 5px;
+    white-space: normal !important;
+    font-size: 0.8rem;
+}
+
+.btn-outline-success {
+    margin-left: 5px;
+}
+
+.img-thumb {
+    width: 50px;
+    height: 50px;
+}
+
+
+/* Animaciones */
+
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.fast {
+    -webkit-animation-duration: 0.4s;
+    animation-duration: 0.4s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fadeIn {
+    animation-name: fadeIn;
+}

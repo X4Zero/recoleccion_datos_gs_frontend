@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="col">
+        <input #termino type="text" (keyup.enter)="buscar(termino.value)" class="form-control" placeholder="Buscar investigador...">
+    </div>
+
+</div>
+
+<app-loading *ngIf="loading"></app-loading>
+
+<div *ngIf="!loading" class="card-deck m-5 animated fadeIn">
+    <div *ngFor="let investigador of investigadores" class="card ">
+        <div (click)="verInvestigador(investigador)" class="text-center puntero">
+
+            <img [src]="investigador.url_imagen | noimage" class="card-img-top img-card center " alt="... ">
+        </div>
+        <div (click)="verInvestigador(investigador)" class="card-body puntero">
+            <h5 class="card-title mb-4 text-capitalize">
+                {{investigador.nombres | lowercase}}
+            </h5>
+            <p class="card-text mb-2">
+                <strong>
+                    Afiliación:
+                </strong>
+                <br> {{investigador.afiliacion}}
+
+                <br>
+                <strong *ngIf="investigador.topicos.length>0">
+                    Temas de Investigación:
+                </strong>
+
+                <br>
+                <span *ngFor="let topico of investigador.topicos " class="badge badge-pill badge-light text-capitalize">{{topico | lowercase}}</span>
+
+                <br>
+
+            </p>
+        </div>
+        <div class="card-body">
+            <a [href]="investigador.url_perfil" target="_blank" class="btn btn-sm btn-outline-secondary">Perfil del Investigador <i class="fas fa-graduation-cap mb-1"></i></a>
+            <button class="btn btn-sm btn-outline-success" (click)="agregar(investigador.url_perfil)">Agregar Investigador <i class="fas fa-user-plus"></i></button>
+
+        </div>
+    </div>
+</div>

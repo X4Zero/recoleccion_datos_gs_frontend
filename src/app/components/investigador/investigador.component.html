@@ -1,0 +1,87 @@
+<app-loading *ngIf="loadingInvestigador"></app-loading>
+
+<div class="row animated fadeIn mb-3" *ngIf="!loadingInvestigador">
+    <div class="col-2">
+        <img [src]="investigador.url_imagen | noimage" class="img-thumbnail img-circle" alt="">
+        <br>
+        <div class="text-center">
+
+            <a [href]="investigador.url_perfil " target="_blank" class="btn btn-sm btn-outline-secondary">Perfil <i class="fas fa-graduation-cap"></i></a>
+        </div>
+    </div>
+
+    <div class="col">
+        <h3 class="text-capitalize">{{ investigador.nombres | lowercase}}</h3>
+        <hr>
+        <p>
+            <strong>Información:</strong>
+            <br> {{ investigador.informacion}}
+            <br>
+            <br>
+            <strong *ngIf="investigador.topicos.length>0">Temas de investigación:</strong>
+            <br>
+            <span *ngFor="let topico of investigador.topicos " class="badge badge-pill badge-light text-capitalize">{{topico | lowercase}}</span>
+            <br>
+
+        </p>
+    </div>
+
+    <div class="col-4 text-right">
+        <button routerLink="/inicio" class="btn btn-outline-danger">
+            Regresar <i class="fas fa-arrow-alt-circle-left"></i>
+        </button>
+
+        <br> <br>
+        <table *ngIf="investigador.citas.length>0" class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th></th>
+                    <th class="text-center">Total</th>
+                    <th class="text-center">Desde 2015</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let cita of investigador.citas">
+                    <td class="text-left">{{ cita.modalidad }}</td>
+                    <td class="text-center">{{ cita.total }}</td>
+                    <td class="text-center">{{ cita.desde_2015 }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <a id="linkExcel" class="btn btn-outline-info" [href]="file_excel" download="investigador.xlsx" target="blank">
+            Exportar <i class="fas fa-file-excel"></i>
+        </a>
+        <!-- <a routerLink="/inicio" class="btn btn-outline-danger">
+            <i class="fas fa-arrow-alt-circle-left"></i> Regresar
+        </a> -->
+
+    </div>
+
+</div>
+
+<div class="row animated fadeIn" *ngIf="!loadingInvestigador">
+    <div class="col">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Título</th>
+                    <th>Autores</th>
+                    <th>Revista</th>
+                    <th>Citado por</th>
+                    <th>Año</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let investigacion of investigador.investigaciones">
+                    <td>{{ investigacion.titulo }}</td>
+                    <td>{{ investigacion.autores }}</td>
+                    <td>{{ investigacion.revista }}</td>
+                    <td>{{ investigacion.numero_citaciones | nocero}}</td>
+                    <td>{{ investigacion.anio | nocero}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>

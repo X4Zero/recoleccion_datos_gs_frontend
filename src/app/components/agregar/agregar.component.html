@@ -1,0 +1,25 @@
+<section class="jumbotron">
+    <div class="container">
+        <h1>Agregar Investigadores</h1>
+        <hr>
+        <p>Instrucciones para agregar un investigador:</p>
+        <ol>
+            <li>Primero necesita la url del perfil del investigador en google scholar</li>
+            <li>Luego tiene que ingresar la url en el siguiente campo y pulse enter</li>
+        </ol>
+
+        <div class="row">
+            <div class="col-sm-8">
+                <!-- <input #url_campo type="text" (keyup.enter)="agregar(url_campo.value)" class="form-control" placeholder="Url del perfil del investigador..."> -->
+                <input #url_campo type="text" class="form-control" placeholder="Url del perfil del investigador...">
+            </div>
+            <div class="col-sm-4">
+                <button class="btn btn-primary" (click)="agregar(url_campo.value)" [disabled]="loading">
+                    <i [ngClass]="{ 'fa-save':!loading, 'fa-sync-alt fa-spin':loading }" class="fa"></i> 
+                      <span *ngIf="!loading"> Agregar Investigador</span>
+                      <span *ngIf="loading"> Espere por favor</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>

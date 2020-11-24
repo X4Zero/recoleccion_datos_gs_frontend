@@ -1,0 +1,42 @@
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1>Investigadores registrados en el sistema</h1>
+        <p>Investigadores con publicaciones, obtenidos mediante web scraping</p>
+    </div>
+</section>
+
+<app-loading *ngIf="loading"></app-loading>
+
+<div class="card-deck m-5 animated fadeIn">
+    <div *ngFor="let investigador of investigadores" class="card ">
+        <div (click)="verInvestigador(investigador)" class="text-center puntero">
+
+            <img [src]="investigador.url_imagen | noimage" class="card-img-top img-card center " alt="... ">
+        </div>
+        <div (click)="verInvestigador(investigador)" class="card-body puntero">
+            <h5 class="card-title mb-4 text-capitalize">
+                {{investigador.nombres | lowercase}}
+            </h5>
+            <p class="card-text mb-2">
+                <strong>
+                    Afiliación:
+                </strong>
+                <br> {{investigador.informacion}}
+
+                <br>
+                <strong *ngIf="investigador.topicos.length>0">
+                    Temas de Investigación:
+                </strong>
+
+                <br>
+                <span *ngFor="let topico of investigador.topicos " class="badge badge-pill badge-light text-capitalize">{{topico | lowercase}}</span>
+
+                <br>
+
+            </p>
+        </div>
+        <div class="card-body">
+            <a [href]="investigador.url_perfil" target="_blank" class="btn btn-sm btn-outline-secondary">Perfil del Investigador <i class="fas fa-graduation-cap"></i></a>
+        </div>
+    </div>
+</div>
